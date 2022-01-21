@@ -7,16 +7,16 @@
  */
 require_once __DIR__ . "/../vendor/autoload.php";
 
-use PayCenter\RabbitMQ\RabbitMQ;
+use Nonfishz\RabbitMQ\RabbitMQ;
 
 
 sendDelayMQ(array(
     "delay_mq"=>1
 ),
-    "tmp_mao_exchange_3",
-    "tmp_mao_dead_exchange",
-        "tmp_mao_queue_3",
-                "tmp_mao_dead_queue",
+    "tmp_exchange_3",
+    "tmp_dead_exchange",
+        "tmp_queue_3",
+                "tmp_dead_queue",
                 20
 );
 

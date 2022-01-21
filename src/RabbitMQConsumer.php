@@ -1,5 +1,5 @@
 <?php
-namespace PayCenter\RabbitMQ;
+namespace Nonfishz\RabbitMQ;
 
 use PhpAmqpLib\Message\AMQPMessage;
 

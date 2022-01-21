@@ -2,24 +2,24 @@
 
 require_once __DIR__ . "/../vendor/autoload.php";
 
-use PayCenter\RabbitMQ\RabbitMQ;
-use PayCenter\RabbitMQ\RabbitMQExchange;
-use PayCenter\RabbitMQ\RabbitMQQueue;
+use Nonfishz\RabbitMQ\RabbitMQ;
+use Nonfishz\RabbitMQ\RabbitMQExchange;
+use Nonfishz\RabbitMQ\RabbitMQQueue;
 
 
 $exchange = new RabbitMQExchange(
-    'tmp_mao_dead_exchange',
+    'tmp_dead_exchange',
     'topic',
     true, // durable
     false  // auto delete
 );
 
 $queue = new RabbitMQQueue(
-    'tmp_mao_dead_queue',
+    'tmp_dead_queue',
     true, // durable
     false, // exclusive
     false, // auto delete
-    'tmp_mao_dead_queue'
+    'tmp_dead_queue'
 );
 
 $config = array(
@@ -58,7 +58,7 @@ $consumer->consume(
 $consumer->blockingConsume();
 
 /**
- * 拼多多无效订单处理
+ * 业务处理
  * @param $message
  * @throws \Exception
  */

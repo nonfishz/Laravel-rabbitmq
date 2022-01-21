@@ -7,14 +7,14 @@
  */
 require_once __DIR__ . "/../vendor/autoload.php";
 
-use PayCenter\RabbitMQ\RabbitMQ;
+use Nonfishz\RabbitMQ\RabbitMQ;
 
 
 sendMQ(array(
     "send_mq"=>1
 ),
-    "tmp_mao_test_exchange",
-            "tmp_mao_test"
+    "tmp_test_exchange",
+            "tmp_test"
 );
 
 

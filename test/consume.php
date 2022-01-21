@@ -2,23 +2,23 @@
 
 require_once __DIR__ . "/../vendor/autoload.php";
 
-use PayCenter\RabbitMQ\RabbitMQ;
-use PayCenter\RabbitMQ\RabbitMQExchange;
-use PayCenter\RabbitMQ\RabbitMQQueue;
+use Nonfishz\RabbitMQ\RabbitMQ;
+use Nonfishz\RabbitMQ\RabbitMQExchange;
+use Nonfishz\RabbitMQ\RabbitMQQueue;
 
 $exchange = new RabbitMQExchange(
-    'tmp_mao_test_exchange',
+    'tmp_test_exchange',
     'topic',
     true, // durable
     false  // auto delete
 );
 
 $queue = new RabbitMQQueue(
-    'tmp_mao_test',
+    'tmp_test',
     true, // durable
     false, // exclusive
     false, // auto delete
-    'tmp_mao_test'
+    'tmp_test'
 );
 
 $config = array(
@@ -57,7 +57,7 @@ $consumer->consume(
 $consumer->blockingConsume();
 
 /**
- * 拼多多无效订单处理
+ * 业务处理
  * @param $message
  * @throws \Exception
  */
@@ -65,6 +65,7 @@ function process_message($message)
 {
     $payload = json_decode($message->body, true);
     print_r($payload);
+    //业务处理
     # 通知MQ
     $message->delivery_info['channel']->basic_ack($message->delivery_info['delivery_tag']);
 }
